@@ -53,27 +53,27 @@ route.delete('/user/:id', (req, res)=>{
 const products = new Products();
 
 route.get('/products', (req, res)=> {
-    perfumes.fetchProducts(req, res);
+    products.fetchProducts(req, res);
 })
 
 // Fetch a single perfume
 route.get('/product/:id', (req, res) => {
-    perfumes.fetchProduct(req, res);
+    products.fetchProduct(req, res);
 })
 
 // Add a new perfume
 route.post('/products', bodyParser.json(), (req, res)=> {
-    perfumes.addProduct(req, res);
+    products.addProduct(req, res);
 })
 
 // Update a product
 route.put('/product/:id', bodyParser.json(), (req, res)=> {
-    perfumes.updateProduct(req, res);
+    products.updateProduct(req, res);
 })
 
 // Delete a product
 route.delete('/product/:id', (req, res)=> {
-    perfumes.deleteProduct(req, res);
+    products.deleteProduct(req, res);
 })
 
 export default route;
