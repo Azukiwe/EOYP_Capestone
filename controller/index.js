@@ -16,7 +16,7 @@ const route = express.Router();
 const user = new User();
 
 route.get('/', (req, res)=>{
-    res.status(200).sendFile(path.join(__dirname, '../view/index.html'));
+    res.status(200).sendFile(path.join(__dirname, '../views/index.html'));
 })
 
 // Client's Route
