@@ -172,7 +172,6 @@ export class Products {
         });
     }
 
-    // fetch Vehicle
     fetchProduct(req, res){
         const qryStr = `
         SELECT prodID, prodName, price, prodDescription, category, imgURL
@@ -183,7 +182,7 @@ export class Products {
         db.query(qryStr, [req.params.id], (err, data) => {
             if (err) throw err;
             res.status(200).json({
-                results: data
+                result: data
             });
         });
     }
@@ -238,7 +237,6 @@ export class Products {
 
 // create a Purchase
 export class Cart {
-    // fetch all Vehicles
     fetchCarts(req, res){
         const qryStr = `
         SELECT order_id, user_id, perfume_id
@@ -252,8 +250,6 @@ export class Cart {
             });
         });
     }
-
-    // fetch Vehicle
     fetchCart(req, res){
         const qryStr = `
         SELECT order_id, user_id, perfume_id
@@ -271,10 +267,7 @@ export class Cart {
 
     // create a Client
     async createCart(req, res) {
-        // payload: data from the user
         let detail = req.body;
-
-        // sql query
         const qryStr = 'INSERT INTO Orders SET ?;';
         db.query(qryStr, [detail], err => {
             if (err) {
@@ -284,8 +277,6 @@ export class Cart {
             res.status(201).json({msg: 'Purchase created successfully.'});
         });
     }
-
-    // update client details
     updateCart(req, res) {
         let data = req.body;
         const qryStr = `
@@ -300,8 +291,6 @@ export class Cart {
             });
         });
     }
-    
-    // delete a client record
     deleteCart(req, res) {
         const qryStr = `
             DELETE FROM Orders
