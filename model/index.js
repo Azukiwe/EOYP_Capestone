@@ -1,9 +1,5 @@
 import db from '../config/index.js'
-
-// bcrypt module
 import {hash, compare, hashSync, genSaltSync} from 'bcrypt'
-
-// middleware for creating a token
 import createToken from '../middleware/AuthenticatedUser.js'
 
 // create a User class
@@ -27,12 +23,9 @@ export class User {
             else {
                 await compare(userPass, data[0].userPass, (_err, _result) => {
                     if (_err) throw _err;
-                    // create a jw token
                     const jwToken = createToken({
                         emailAdd, userPass
                     });
-
-                    // saving 
                     res.cookie('ValidClient', jwToken, {
                         maxAge: 3600000,
                         httpOnly: true
@@ -55,7 +48,7 @@ export class User {
         });
     }
 
-    // fetch Clients
+    // fetch Users
     fetchUsers(req, res){
         const qryStr = `
         SELECT userID, firstName, lastName, gender, cellphoneNo, emailAdd, userPass, userRole, userProfile
@@ -70,7 +63,7 @@ export class User {
         });
     }
 
-    // fetch Clients
+    // fetch User
     fetchUser(req, res){
         const qryStr = `
         SELECT userID, firstName, lastName, gender, cellphoneNo, emailAdd, userPass, userRole, userProfile
@@ -86,18 +79,13 @@ export class User {
         });
     }
 
-    // create a Client
+    // create a User
     async createUser(req, res) {
-        // payload: data from the user
         let detail = req.body;
         console.log(detail);
-
-        // hashing the password
         let salt = genSaltSync(15); 
         console.log(detail.userPass);
         detail.userPass = await hash(detail.userPass, salt);
-
-        // this information will be used for client authentication
         let user = {
             emailAdd: detail.emailAdd,
             userPass: detail.userPass
@@ -111,8 +99,6 @@ export class User {
                 return;
             }
             const jwToken = createToken(user);
-            // This token will be saved in the cookie.
-            // duration in milliseconds
             res.cookie('LegitClient', jwToken, {
                 maxAge: 3600000,
                 httpOnly: true
@@ -121,7 +107,7 @@ export class User {
         }) 
     }
 
-    // update client details
+    // update User details
     updateUser(req, res) {
         let data = req.body;
         if( (data.userPass !== null) || (data.userPass !== undefined)){
@@ -140,12 +126,11 @@ export class User {
         });
     }
     
-    // delete a client record
+    // delete a User
     deleteUser(req, res) {
         const qryStr = `
             DELETE FROM Users
-            WHERE userID = ?;`
-    
+            WHERE userID = ?;`;
         db.query(qryStr, [req.params.id], (err) => {
             if (err) throw err;
             res.status(200).json({
@@ -186,14 +171,10 @@ export class Products {
             });
         });
     }
-
-    // create a Client
+//Adding a Product
     async addProduct(req, res) {
-        // payload: data from the user
         let detail = req.body;
         console.log(detail);
-
-        // sql query
         const qryStr = 'INSERT INTO Products SET ?;';
         db.query(qryStr, [detail], err => {
             if (err) {
@@ -204,7 +185,7 @@ export class Products {
         });
     }
 
-    // update client details
+    // update a Product
     updateProduct(req, res) {
         let data = req.body;
         const qryStr = `
@@ -220,7 +201,7 @@ export class Products {
         });
     }
     
-    // delete a client record
+    // delete a Product
     deleteProduct(req, res) {
         const qryStr = `
             DELETE FROM Products
@@ -235,7 +216,7 @@ export class Products {
     }
 }
 
-// create a Purchase
+//CART
 export class Cart {
     fetchCarts(req, res){
         const qryStr = `
@@ -265,7 +246,7 @@ export class Cart {
         });
     }
 
-    // create a Client
+    // create a Cart
     async createCart(req, res) {
         let detail = req.body;
         const qryStr = 'INSERT INTO Orders SET ?;';
@@ -277,6 +258,7 @@ export class Cart {
             res.status(201).json({msg: 'Purchase created successfully.'});
         });
     }
+    //Updating a Cart
     updateCart(req, res) {
         let data = req.body;
         const qryStr = `
@@ -291,6 +273,7 @@ export class Cart {
             });
         });
     }
+    //Deleting a Cart
     deleteCart(req, res) {
         const qryStr = `
             DELETE FROM Orders
