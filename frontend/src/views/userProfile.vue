@@ -14,14 +14,64 @@
             <div class="col-lg-4">
               <div class="card mb-4">
                 <div class="card-body text-center">
-                  <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar"
+                  <img :src="legitUser.userProfile" alt=""
                     class="rounded-circle img-fluid" style="width: 150px;">
                   <h5 class="my-3">{{legitUser.firstName}} {{legitUser.lastName}}</h5>
                   <p class="text-muted mb-1">{{legit}}</p>
-                  <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
+                  <p class="text-muted mb-4">{{legitUser.userRole}}</p>
                   <div class="d-flex justify-content-center mb-2">
                     <button type="button" class="btn btn-primary">Follow</button>
                     <button type="button" class="btn btn-outline-primary ms-1">Message</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card mb-4">
+                <div class="card-body">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Name</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{legitUser.firstName}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Surname</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{legitUser.lastName}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Email</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{legitUser.emailAdd}}</p>
+                    </div>
+                  </div>
+                  <hr>  
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Mobile</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">(+27){{legitUser.cellphoneNo}}</p>
+                    </div>
+                  </div>
+                  <hr>
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <p class="mb-0">Gender</p>
+                    </div>
+                    <div class="col-sm-9">
+                      <p class="text-muted mb-0">{{legitUser.gender}}</p>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -107,31 +157,7 @@
             </form>
           </div>
         </div>
-        <div class="left">
-          <div class="legitUser">
-            <div
-              class="img"
-              :style="{ backgroundImage: `url(${legitUser.userProfile})` }"
-            ></div>
-            <h2 class="name">
-              {{ legitUser.firstName }} {{ legitUser.lastName }}
-            </h2>
-            <div class="details">
-              <h3>E-mail Address :</h3>
-              <h3>{{ legitUser.emailAdd }}</h3>
-            </div>
-            <div class="details">
-              <h3>Phone number :</h3>
-              <h3>{{ legitUser.cellphoneNo }}</h3>
-            </div>
-            <div class="details">
-              <h3>Gender :</h3>
-              <h3>{{ legitUser.gender }}</h3>
-            </div>
-            <div class="details">
-              <h3>Role :</h3>
-              <h3>{{ legitUser.userRole }}</h3>
-            </div>
+    
             <div class="buttons">
               <button class="btn-edit" @click="showEdit()">
                 <i class="fa-solid fa-pen-to-square" ></i> Edit account
@@ -142,8 +168,7 @@
               </button>
             </div>
           </div>
-        </div>
-      </div>
+        
     </template>
     <script>
     export default {
@@ -167,10 +192,10 @@
       },
       methods: {
         showDelete() {
-          document.querySelector(".delete_screen").id = "showModal";
+          document.querySelector(".delete").id = "showModal";
         },
         hideDelete() {
-          document.querySelector(".delete_screen").id = "hideModal";
+          document.querySelector(".delete").id = "hideModal";
         },
         update() {
           this.$store.dispatch('updateUser', this.legitUser.userID, this.updatingUser);
@@ -181,17 +206,20 @@
           hide.hideDelete();
         },
         showEdit() {
-          document.querySelector(".edit_screen").id = "showModal";
+          document.querySelector(".edit").id = "showModal";
           console.log(this.updatingUser)
         },
         hideEdit() {
-          document.querySelector(".edit_screen").id = "hideModal";
+          document.querySelector(".edit").id = "hideModal";
         }
       },
     }
     </script>
     <style>
 .delete{
-
+display: none;
+}
+.edit{
+  display:none;
 }
 </style>

@@ -15,24 +15,15 @@ export default createStore({
     legitUser: null,
     message: null,
     cart: null,
-    showModal: false
+    showModal: false,
+    productTotal: null,
    },
   getters: {
-    // products(state){
-    //   return state.products
-    // },
-    // product(state){
-    //   return state.product
-    // },
-    // users(state){
-    //   return state.users
-    // },
-    // user(state){
-    //   return state.user
-    // },
-    // legitUser(state){
-    //   return state.legitUser
-    // }
+   Quantity: state => product => {
+    const item = state.cart.find(item.id === product.id)
+    if(item) return item.quantity
+    else return null
+   }
   },
 
   mutations: {
