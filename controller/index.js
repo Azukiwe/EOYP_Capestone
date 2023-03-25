@@ -62,7 +62,7 @@ route.get('/cart/:id', (req, res) => {
     products.fetchCart(req, res);
 })
 route.post('/cart', bodyParser.json(), (req, res)=> {
-    products.addCart(req, res);
+    products.addItemToCart(req, res);
 })
 route.put('/cart/:id', bodyParser.json(), (req, res)=> {
     products.updateCart(req, res);
