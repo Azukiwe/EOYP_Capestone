@@ -220,8 +220,8 @@ export class Products {
 export class Cart {
     fetchCarts(req, res){
         const qryStr = `
-        SELECT order_id, user_id, perfume_id
-        FROM Orders;
+        SELECT cartID, userID, prodID
+        FROM cart;
         `;
 
         db.query(qryStr, (err, data) => {
@@ -233,9 +233,9 @@ export class Cart {
     }
     fetchCart(req, res){
         const qryStr = `
-        SELECT order_id, user_id, perfume_id
-        FROM Orders
-        WHERE order_id = ?;
+        SELECT cartID, userID, prodID
+        FROM cart
+        WHERE cartID = ?;
         `;
 
         db.query(qryStr, [req.params.id], (err, data) => {
@@ -249,7 +249,7 @@ export class Cart {
     // create a Cart
     async createCart(req, res) {
         let detail = req.body;
-        const qryStr = 'INSERT INTO Orders SET ?;';
+        const qryStr = 'INSERT INTO cart SET ?;';
         db.query(qryStr, [detail], err => {
             if (err) {
                 res.status(401).json({err});
@@ -261,10 +261,12 @@ export class Cart {
     //Updating a Cart
     updateCart(req, res) {
         let data = req.body;
+        if(detail.userPass != null || detail.userPass != undefined) 
+        detail.userPass =hashSync(detail.userPass,15);
         const qryStr = `
-            UPDATE Orders
+            UPDATE cart
             SET ?
-            WHERE order_id = ?;`
+            WHERE cartID = ?;`
 
         db.query(qryStr, [data, req.params.id], (err) => {
             if (err) throw err;
@@ -276,8 +278,8 @@ export class Cart {
     //Deleting a Cart
     deleteCart(req, res) {
         const qryStr = `
-            DELETE FROM Orders
-            WHERE order_id = ?;`
+            DELETE FROM cart
+            WHERE cartID = ?;`
     
         db.query(qryStr, [req.params.id], (err) => {
             if (err) throw err;

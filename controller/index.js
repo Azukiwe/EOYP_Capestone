@@ -52,6 +52,23 @@ route.put('/product/:id', bodyParser.json(), (req, res)=> {
 })
 route.delete('/product/:id', (req, res)=> {
     products.deleteProduct(req, res);
+});
+//CART
+const cart = new Cart();
+route.get('/carts ', (req, res)=> {
+    products.fetchCarts(req, res);
 })
+route.get('/cart/:id', (req, res) => {
+    products.fetchCart(req, res);
+})
+route.post('/cart', bodyParser.json(), (req, res)=> {
+    products.addCart(req, res);
+})
+route.put('/cart/:id', bodyParser.json(), (req, res)=> {
+    products.updateCart(req, res);
+})
+route.delete('/cart/:id', (req, res)=> {
+    products.deleteCart(req, res);
+});
 
 export default route;
