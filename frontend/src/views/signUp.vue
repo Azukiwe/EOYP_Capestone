@@ -147,19 +147,8 @@ export default {
 
   methods: {
     signUp() {
-      //  this.payload = {
-      //   firstName: this.firstName,
-      //   lastName: this.lastName,
-      //   emailAddress: this.emailAdd,
-      //   gender: this.gender,
-      //   phone: this.cellphoneNo,
-      //   password: this.userPass,
-      //   imgURL: this.imgURL
-      //  }
       console.log(this.payload);
       this.$store.dispatch("registerUser", this.payload);
-      //  console.log(this.$store.state.user);
-      //  console.log(this.Message);
     },
   },
 };

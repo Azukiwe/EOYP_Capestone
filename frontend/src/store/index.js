@@ -45,6 +45,18 @@ export default createStore({
     setMessage(state, value) {
       state.message = value;
     },
+    setCart(state,cart){
+      state.cart = cart;
+    },
+    sort:(state)=>{
+      state.products.sort((a,b)=>{
+        return a.price - b.price;
+      });
+      if(state.asc){
+        state.products.reverse();
+    }
+    state.asc = !state.asc;
+  },
   },
   actions: {
     async fetchUsers(context) {
@@ -106,13 +118,37 @@ export default createStore({
       } else {
         context.commit("setMessage", err);
       }
-      // async handleSubmit(){
-      //   const res = await axios.post('login',{
-      //     email: this.email,
-      //     password: this.password
-      //   });
-      //   localStorage.setItem('token', res.data.token);
-      // }
+    },
+    async updateUser(context, payload){
+      const res = await axios.put(`${connect}user/${payload.userID}`,payload);
+      const {msg,err} = await res.data;
+      console.log("msg - update",msg);
+      if(msg){
+        context.commit("setMessage",msg);
+      }else{
+        context.commit("setMessage", err);
+      }
+    },
+    async updateProduct(context, payload){
+      const res = await axios.put(`${connect}user/${payload.prodID}`,payload);
+      const {msg,err,results} = await res.data;
+      if(msg){
+        context.commit("setMessage",results);
+      }else{
+        context.commit("setMessage", err);
+      }
+    },
+    fetchCart: async (context,id) => {
+      const res = await axios.get(`${connect}user/${id}/carts`);
+      
+      const { result, err } = await res.data;
+      
+      if (result) {
+        
+        context.commit("setCart", result);
+      } else {
+        context.commit("setCart", err);
+      }
     },
     async fetchAdmin(context) {
       const res = await axios.get(`${connect}/admin`);
@@ -125,15 +161,46 @@ export default createStore({
     },
     async deleteUser(context, id) {
       const res = await axios.delete(`${connect}/user/${id}`);
-      const { msg, err } = await res.data;
-      if (msg) {
-        context.commit("deleteUser", msg[0]);
+      const { result, err } = await res.data;
+      if (result) {
+        context.commit("setUsers", result);
         console.log(msg);
       } else {
         context.commit("setMessage", err);
         console.log(err);
       }
     },
+    addItemToCart: async (context,payload) => {
+      console.log(payload);
+      const res = await axios.post(`${connect}user/${payload.userID}/cart`, payload);
+      const { msg, err } = await res.data;
+
+      if (msg) {
+        console.log(msg);
+        context.commit("setMessage", msg);
+        context.dispatch('fetchCart', this.state.legitUser.userID)
+      } else {
+        context.commit("setMessage", err);
+        console.log(err);
+      }
+    },
+    async AddProduct(context, payload) {
+      console.log(payload);
+      const res = await axios.post(`${connect}addProduct`, payload);
+      // console.log(payload);
+      // console.log(res);
+      const { msg, err } = await res.data;
+      if (msg) {
+        console.log("Product added message: ", msg);
+        // context.commit("setUser", results);
+        context.commit("setMessage", msg);
+        context.dispatch("fetchProducts");
+        // console.log(results)
+      } else {
+        context.commit("setMessage", err);
+      }
+    },
+
   },
   modules: {},
 });

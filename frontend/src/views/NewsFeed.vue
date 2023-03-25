@@ -1,339 +1,67 @@
+
 <template>
-  <nav class="navbar navbar-light bg-white">
-    <a href="#" class="navbar-brand">Bootsbook</a>
-  </nav>
-  <!--- \\\\\\\Post-->
-  <div class="card gedf-card">
-    <div class="card-header">
-      <ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            id="posts-tab"
-            data-toggle="tab"
-            href="#posts"
-            role="tab"
-            aria-controls="posts"
-            aria-selected="true"
-            >Make a publication</a
-          >
-        </li>
-      </ul>
-    </div>
-    <div class="card-body">
-      <div class="tab-content" id="myTabContent">
-        <div
-          class="tab-pane fade show active"
-          id="posts"
-          role="tabpanel"
-          aria-labelledby="posts-tab"
-        >
-          <div class="form-group">
-            <label class="sr-only" for="message">post</label>
-            <textarea
-              class="form-control"
-              id="message"
-              rows="3"
-              placeholder="What are you thinking?"
-            ></textarea>
-          </div>
-        </div>
-        <div
-          class="tab-pane fade"
-          id="images"
-          role="tabpanel"
-          aria-labelledby="images-tab"
-        >
-          <div class="form-group">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFile" />
-              <label class="custom-file-label" for="customFile"
-                >Upload image</label
-              >
+ <!-- Section: Design Block -->
+<section class=" text-center text-lg-start">
+  <div class="card mb-3">
+    <div class="row g-0 d-flex align-items-center">
+      <div class="col-lg-4 d-none d-lg-flex">
+        <img src="https://i.postimg.cc/Sxf0F1S8/2023-03-08-1-removebg-preview.png" alt="Trendy Pants and Shoes"
+          class="w-100 rounded-t-5 rounded-tr-lg-0 rounded-bl-lg-5" />
+      </div>
+      <div class="col-lg-8">
+        <div class="card-body py-5 px-md-5">
+
+          <form action="https://formspree.io/f/xvoyqypq" method="post">
+            <!-- Email input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example1">Full Name</label>
+              <input type="text" id="form2Example1" class="form-control" required/>
             </div>
-          </div>
-          <div class="py-4"></div>
-        </div>
-      </div>
-      <div class="btn-toolbar justify-content-between">
-        <div class="btn-group">
-          <button type="submit" class="btn btn-primary">share</button>
-        </div>
-        <div class="btn-group">
-          <button
-            id="btnGroupDrop1"
-            type="button"
-            class="btn btn-link dropdown-toggle"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-          >
-            <i class="fa fa-globe"></i>
-          </button>
-          <div
-            class="dropdown-menu dropdown-menu-right"
-            aria-labelledby="btnGroupDrop1"
-          >
-            <a class="dropdown-item" href="#"
-              ><i class="fa fa-globe"></i> Public</a
-            >
-            <a class="dropdown-item" href="#"
-              ><i class="fa fa-users"></i> Friends</a
-            >
-            <a class="dropdown-item" href="#"
-              ><i class="fa fa-user"></i> Just me</a
-            >
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!--- \\\\\\\Post-->
-  <div class="card gedf-card">
-    <div class="card-header">
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="mr-2">
-            <img
-              class="rounded-circle"
-              width="45"
-              src="https://picsum.photos/50/50"
-              alt=""
-            />
-          </div>
-          <div class="ml-2">
-            <div class="h5 m-0">@LeeCross</div>
-            <div class="h7 text-muted">Miracles Lee Cross</div>
-          </div>
-        </div>
-        <div>
-          <div class="dropdown">
-            <button
-              class="btn btn-link dropdown-toggle"
-              type="button"
-              id="gedf-drop1"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i class="fa fa-ellipsis-h"></i>
-            </button>
-            <div
-              class="dropdown-menu dropdown-menu-right"
-              aria-labelledby="gedf-drop1"
-            >
-              <div class="h6 dropdown-header">Configuration</div>
-              <a class="dropdown-item" href="#">Save</a>
-              <a class="dropdown-item" href="#">Hide</a>
-              <a class="dropdown-item" href="#">Report</a>
+
+            <!-- Password input -->
+            <div class="form-outline mb-4">
+              <label class="form-label" for="form2Example1">Email Address</label>
+              <input type="email" id="form2Example2" class="form-control" required />
             </div>
+          <!--MESSAGE INPUT-->
+          <div class="form-outline mb-4">
+            <label class="form-label" for="form2Example1">Message</label>
+            <input type="text" id="form2Example1" class="form-control" style="height:5rem;" required/>
+            
           </div>
+            <!-- 2 column grid layout for inline styling -->
+            <div class="row mb-4">
+              <div class="col d-flex justify-content-center">
+               
+              </div>
+              </div>
+               
+            <!-- Submit button -->
+            <button type="submit" class="btn btn-primary btn-block mb-4">Submit</button>
+
+          </form>
+
         </div>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="text-muted h7 mb-2">
-        <i class="fa fa-clock-o"></i>10 min ago
-      </div>
-      <a class="card-link" href="#">
-        <h5 class="card-title">
-          Lorem ipsum dolor sit amet, consectetur adip.
-        </h5>
-      </a>
-
-      <p class="card-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo recusandae
-        nulla rem eos ipsa praesentium esse magnam nemo dolor sequi fuga quia
-        quaerat cum, obcaecati hic, molestias minima iste voluptates.
-      </p>
-    </div>
-    <div class="card-footer">
-      <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-      <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-      <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-    </div>
-  </div>
-  <!-- Post /////-->
-
-  <!--- \\\\\\\Post-->
-  <div class="card gedf-card">
-    <div class="card-header">
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="mr-2">
-            <img
-              class="rounded-circle"
-              width="45"
-              src="https://picsum.photos/50/50"
-              alt=""
-            />
-          </div>
-          <div class="ml-2">
-            <div class="h5 m-0">@LeeCross</div>
-            <div class="h7 text-muted">Miracles Lee Cross</div>
-          </div>
-        </div>
-        <div>
-          <div class="dropdown">
-            <button
-              class="btn btn-link dropdown-toggle"
-              type="button"
-              id="gedf-drop1"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i class="fa fa-ellipsis-h"></i>
-            </button>
-            <div
-              class="dropdown-menu dropdown-menu-right"
-              aria-labelledby="gedf-drop1"
-            >
-              <div class="h6 dropdown-header">Configuration</div>
-              <a class="dropdown-item" href="#">Save</a>
-              <a class="dropdown-item" href="#">Hide</a>
-              <a class="dropdown-item" href="#">Report</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="card-footer">
-      <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-      <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-      <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-    </div>
-  </div>
-  <!-- Post /////-->
-
-  <!--- \\\\\\\Post-->
-  <div class="card gedf-card">
-    <div class="card-header">
-      <div class="d-flex justify-content-between align-items-center">
-        <div class="d-flex justify-content-between align-items-center">
-          <div class="mr-2">
-            <img
-              class="rounded-circle"
-              width="45"
-              src="https://picsum.photos/50/50"
-              alt=""
-            />
-          </div>
-          <div class="ml-2">
-            <div class="h5 m-0">@LeeCross</div>
-            <div class="h7 text-muted">Miracles Lee Cross</div>
-          </div>
-        </div>
-        <div>
-          <div class="dropdown">
-            <button
-              class="btn btn-link dropdown-toggle"
-              type="button"
-              id="gedf-drop1"
-              data-toggle="dropdown"
-              aria-haspopup="true"
-              aria-expanded="false"
-            >
-              <i class="fa fa-ellipsis-h"></i>
-            </button>
-            <div
-              class="dropdown-menu dropdown-menu-right"
-              aria-labelledby="gedf-drop1"
-            >
-              <div class="h6 dropdown-header">Configuration</div>
-              <a class="dropdown-item" href="#">Save</a>
-              <a class="dropdown-item" href="#">Hide</a>
-              <a class="dropdown-item" href="#">Report</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="card-body">
-      <div class="text-muted h7 mb-2">
-        <i class="fa fa-clock-o"></i> Hace 40 min
-      </div>
-      <a class="card-link" href="#">
-        <h5 class="card-title">
-          Totam non adipisci hic! Possimus ducimus amet, dolores illo ipsum quos
-          cum.
-        </h5>
-      </a>
-
-      <p class="card-text">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam sunt
-        fugit reprehenderit consectetur exercitationem odio, quam nobis?
-        Officiis, similique, harum voluptate, facilis voluptas pariatur dolorum
-        tempora sapiente eius maxime quaerat.
-        <a
-          href="https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU"
-          target="_blank"
-          >https://mega.nz/#!1J01nRIb!lMZ4B_DR2UWi9SRQK5TTzU1PmQpDtbZkMZjAIbv97hU</a
-        >
-      </p>
-    </div>
-    <div class="card-footer">
-      <a href="#" class="card-link"><i class="fa fa-gittip"></i> Like</a>
-      <a href="#" class="card-link"><i class="fa fa-comment"></i> Comment</a>
-      <a href="#" class="card-link"><i class="fa fa-mail-forward"></i> Share</a>
-    </div>
-  </div>
-  <!-- Post /////-->
-
-  <div class="col-md-3">
-    <div class="card gedf-card">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-      </div>
-    </div>
-    <div class="card gedf-card">
-      <div class="card-body">
-        <h5 class="card-title">Card title</h5>
-        <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-        <p class="card-text">
-          Some quick example text to build on the card title and make up the
-          bulk of the card's content.
-        </p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
       </div>
     </div>
   </div>
+</section>
+<!-- Section: Design Block -->
 </template>
+
 <style>
-body {
-  background-color: #eeeeee;
-}
-
-.h7 {
-  font-size: 0.8rem;
-}
-
-.gedf-wrapper {
-  margin-top: 0.97rem;
+.rounded-t-5 {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
 }
 
 @media (min-width: 992px) {
-  .gedf-main {
-    padding-left: 4rem;
-    padding-right: 4rem;
+  .rounded-tr-lg-0 {
+    border-top-right-radius: 0;
   }
-  .gedf-card {
-    margin-bottom: 2.77rem;
-  }
-}
 
-/**Reset Bootstrap*/
-.dropdown-toggle::after {
-  content: none;
-  display: none;
+  .rounded-bl-lg-5 {
+    border-bottom-left-radius: 0.5rem;
+  }
 }
 </style>

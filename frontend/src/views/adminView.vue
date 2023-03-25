@@ -1,6 +1,12 @@
 <template>
+  <!--PRODUCT TABLE-->
+  <div>
+    <button></button>
+  </div>
     <div class="Products">
+      <h3>Products Table</h3>
   <table class="table">
+
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -29,8 +35,9 @@
 </div>
   <br />
   <br />
+  <!--  USERS TABLE-->
+  <h3>Users Table</h3>
   <table class="table">
-
     <thead>
       <tr>
         <th scope="col">ID</th>
@@ -78,6 +85,25 @@ export default {
       users
     };
   },
+  data() {
+    return {
+      payload: {
+        firstName: "",
+        lastName: "",
+        userPass: "",
+        gender: "",
+        cellphoneNo: "",
+        emailAdd: "",
+        userProfile: "",
+      },
+    };
+  },
+  computed: {
+    addProduct() {
+      return this.$store.state.addProduct;
+    },
+  },
+
  
 methods: {
   deleteProduct(id){
@@ -86,8 +112,21 @@ methods: {
   },
   deleteUser(id){
     this.$store.dispatch("deleteUser",id);
+    this.$store.dispatch('fetchUsers');
     
-  }
+  },
+  methods: {
+    signUp() {
+      console.log(this.payload);
+      this.$store.dispatch("addProduct", this.payload);
+    },
+  },
 }
 }
 </script>
+<style>
+thead{
+  color:royalblue;
+  font-size: 1,5rem;
+}
+</style>

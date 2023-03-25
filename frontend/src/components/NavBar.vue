@@ -18,10 +18,10 @@
               <router-link to="/products">Shop Now</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/Newsfeed">News feed</router-link>
+                <router-link to="/signUp">Sign up</router-link>
               </li>
               <li class="nav-item">
-                <router-link to="/signUp">Sign up</router-link>
+                <router-link to="/Newsfeed">Contact Us</router-link>
               </li>
              
             </ul>

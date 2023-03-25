@@ -1,4 +1,6 @@
 <template>
+  <button class="sort" @click="sort()">Sort by Price</button>
+  
   <div class="container" v-if="products == undefined">
     <SpinnerComponent />
     
@@ -20,14 +22,14 @@
           <div class="card-structure">
             <h5>{{ product.prodName }}</h5>
             <h5>{{ product.category }}</h5>
-            <h5>{{ product.price }}</h5>
+            <h5>R {{ product.price }}</h5>
             <router-link class="more"
               :to="{ name: 'singleProduct', params: { id: product.prodID } }"
               >view more</router-link
             > <br>
-             <button @click.prevent="toggleModal()">
+             <!-- <button @click.prevent="toggleModal()" v-on:click="addItemtoCart(products)">
               add to cart
-            </button>
+            </button> -->
           </div>
         </div>
       </div>
@@ -65,14 +67,23 @@ export default {
   methods: {
     toggleModal() {
       this.$store.state.showModal = true;
-    }
-  }
+    },
+    sort() {
+      this.$store.commit('sort');
+  },
+
+  // addItemtoCart(){
+  //   console.log(product)
+  //   this.cart.push(this.cart.indexOf(product));
+    
+  // }
   // methods:{
   //   log() {
   //     console.log(this.products);
   //   }
   // }
-};
+}
+}
 </script>
 <style scoped>
 .container{
@@ -99,12 +110,18 @@ display: flex;
 flex-direction: column;
 align-items: center;
 font-family: 'Courier New', Courier, monospace;
+margin-left: 6rem;
 }
 .more{
   text-decoration: none;
   border:2px solid black;
  color: black;
  
+}
+.sort{
+  margin-top: 4rem;
+  box-shadow:2px 2px 2px lightBlue;
+  border: 2px solid lightblue;
 }
 
 

@@ -38,9 +38,9 @@
       <!-- Section: Social media -->
   
       <!-- Section: Form -->
-      <section class="">
-        <form action="">
-          <!--Grid row-->
+      <!-- <section class="">
+        <form action="https://formspree.io/f/xvoyqypq" method="post">
+          Grid row
           <div class="row d-flex justify-content-center">
             <div class="col-auto">
               <p class="pt-2">
@@ -49,7 +49,7 @@
             </div>
             <div class="col-md-5 col-12">
               <div class="form-outline form-white mb-4">
-                <input type="email" id="form5Example21" class="form-control" placeholder="Enter a valid Email Address" />
+                <input type="email" id="form5Example21" class="form-control" placeholder="Enter a valid Email Address" required/>
                
               </div>
             </div>
@@ -59,14 +59,14 @@
               </button>
             </div>
           </div>
-        </form>
-      </section>
+        </form> -->
+      <!-- </section> -->
       <section class="mb-4">
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
-          repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
-          eum harum corrupti dicta, aliquam sequi voluptate quas.
-        </p>
+        <h4>Contact Us:</h4>
+          <p>Visit Customer Support</p>
+          <p>Email: sales@connectwitheskom.co.za</p>
+          <p>MONDAY – THURSDAY 8:00AM – 5PM ,FRIDAY 8AM- 4:30PM,WEEKEND & PUBLIC HOLIDAYS – CLOSED</p>
+          <!-- <p>BERGZICHT OFFICE PARK 179 ROOIBOK STREET ALLENSNEK, 1709 SOUTH AFRICA</p> -->
       </section>
   
     </div>
