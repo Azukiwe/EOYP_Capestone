@@ -2,7 +2,7 @@ import express from 'express'
 import path from 'path'
 import bodyParser from 'body-parser'
 import {User,
-Products} from '../model/index.js'
+Products,Cart} from '../model/index.js'
 import { Router } from 'express'
 
 import { dirname } from 'path';
@@ -55,19 +55,19 @@ route.delete('/product/:id', (req, res)=> {
 });
 //CART
 const cart = new Cart();
-route.get('/carts ', (req, res)=> {
+route.get('/user/:id/carts ', (req, res)=> {
     products.fetchCarts(req, res);
 })
-route.get('/cart/:id', (req, res) => {
+route.get('/user/:id/cart/:id', (req, res) => {
     products.fetchCart(req, res);
 })
-route.post('/cart', bodyParser.json(), (req, res)=> {
+route.post('/user/:id/cart', bodyParser.json(), (req, res)=> {
     products.addItemToCart(req, res);
 })
-route.put('/cart/:id', bodyParser.json(), (req, res)=> {
+route.put('/user/:id/cart/:id', bodyParser.json(), (req, res)=> {
     products.updateCart(req, res);
 })
-route.delete('/cart/:id', (req, res)=> {
+route.delete('/user/:id/cart/:id', (req, res)=> {
     products.deleteCart(req, res);
 });
 
